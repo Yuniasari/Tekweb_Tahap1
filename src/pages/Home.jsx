@@ -13,8 +13,6 @@ const Home = () => {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">Selamat Datang, {user.name}</h1>
-      <p>Umur: {user.age}</p>
-      <p>Jenis Kelamin: {user.gender}</p>
       <div className="mt-4">
         <button
           onClick={() => navigate("/medical-records")}

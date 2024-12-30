@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [userData, setUserData] = useState({
+  const [credentials, setCredentials] = useState({
     name: "",
-    age: "",
-    gender: "",
+    password: "",
   });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("user", JSON.stringify(userData));
+    // Simpan data user ke localStorage
+    localStorage.setItem("user", JSON.stringify(credentials));
+    // Navigasi ke halaman beranda
     navigate("/home");
   };
 
@@ -30,31 +31,20 @@ const Login = () => {
           type="text"
           name="name"
           placeholder="Nama"
-          value={userData.name}
+          value={credentials.name}
           onChange={handleChange}
           className="block w-full p-2 mb-4 border rounded"
           required
         />
         <input
-          type="number"
-          name="age"
-          placeholder="Umur"
-          value={userData.age}
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={credentials.password}
           onChange={handleChange}
           className="block w-full p-2 mb-4 border rounded"
           required
         />
-        <select
-          name="gender"
-          value={userData.gender}
-          onChange={handleChange}
-          className="block w-full p-2 mb-4 border rounded"
-          required
-        >
-          <option value="">Jenis Kelamin</option>
-          <option value="Laki-laki">Laki-laki</option>
-          <option value="Perempuan">Perempuan</option>
-        </select>
         <button
           type="submit"
           className="w-full bg-blue-500 text-white p-2 rounded"
